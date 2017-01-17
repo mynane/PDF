@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<input type="text" />
+<button>验证</button>
+<span></span>
+<script src="./PriceStrategy.js"></script>
+<script src="./InputStrategy.js"></script>
+<script>
+	// var price = PriceStrategy('return90', '123');
+
+	// alert(price);
+
+	function $tag(tag, context){
+		context = context || document;
+
+		return context.getElementsByTagName(tag);
+	}
+	$tag('input')[0].onclick = function(){
+		var value = $tag('button')[0].value;
+		$tag('span')[0].innerHTML = InputStrategy.check('notNull', value)
+	}
+
+</script>
+</body>
+</html>

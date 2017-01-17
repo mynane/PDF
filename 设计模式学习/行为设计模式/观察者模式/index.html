@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+<script src='./Observer.js'></script>
+<script>
+	Observer.regist('test', function(e){
+		alert(e.type +' : '+ e.args.msg);
+	})
+	setTimeout(function(){
+		Observer.fire('test', {msg: '传递参数'})
+	}, 4000)
+</script>
+</body>
+</html>

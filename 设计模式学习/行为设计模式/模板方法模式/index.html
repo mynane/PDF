@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div id="content"></div>
+<script src='./Alert.js'></script>
+<script src='./Nav.js'></script>
+<script>
+	// 右侧按钮提示框
+	// var RightAlert = function(data) {
+	// 	// 继承基本提示构造函数
+	// 	Alert.call(this, data);
+
+	// 	// 为确认按钮添加right类设置位置居右
+	// 	this.confirmBtn.className = this.confirmBtn.className + ' right';
+	// };
+
+	// // 继承基本提示框方法
+	// RightAlert.prototype = new Alert();
+	// new RightAlert({
+	// 	content : '提示',
+	// 	success: function(){
+	// 		alert(123);
+	// 	}
+	// }).init();
+
+	var TitleAlert = function(data){
+		Alert.call(this, data);
+		this.title = data.title;
+
+		this.titleNode = document.createElement('h3');
+
+		this.titleNode.innerHTML = this.title;
+	}
+
+	TitleAlert.prototype = new Alert();
+
+	TitleAlert.prototype.init = function(){
+		Alert.prototype.init.call(this);
+		this.panel.insertBefore(this.titleNode, this.panel.firstChild);
+	}
+
+	// new TitleAlert({title: '123', content: '你好'}).init();
+
+	var CancelAlert = function(data){
+		TitleAlert.call(this, data);
+
+		this.cancel = data.cancel;
+
+		this.cancelBtn = document.createElement('span');
+
+		this.cancelBtn.className = 'cancel';
+
+		this.cancelBtn.innerHTML = this.cancel || '取消';
+	}
+
+	CancelAlert.prototype = new Alert();
+
+	CancelAlert.prototype.init = function(){
+		TitleAlert.prototype.init.call(this);
+
+		this.panel.appendChild(this.cancelBtn);
+	}
+
+	CancelAlert.prototype.bindEvent = function(){
+		var me = this;
+
+		TitleAlert.prototype.bindEvent.call(me);
+
+		this.cancelBtn.onclick = function(){
+			me.fail();
+			me.hide();
+		}
+	}
+
+	new CancelAlert(
+	{
+		title: '213',
+		content: '123',
+		success: function(){
+			alert('ok');
+		},
+		fail: function(){
+			alert('fail');
+		}
+	}).init();
+
+	var nav = document.getElementById('content');
+
+	nav.innerHTML = NumNav([
+		{
+			href: 'http://ww.baidu.com/',
+			title: '百度一下,你就知道',
+			name: '百度',
+			num: '10'
+		},
+		{
+			href: 'http://ww.taobao.com/',
+			title: '淘宝商城',
+			name: '淘宝',
+			num: '2'
+		},
+		{
+			href: 'http://ww.qq.com/',
+			title: '腾讯首页',
+			name: '腾讯',
+			num: '2'
+		}
+	]);
+
+	// nav.innerHTML = LinkNav([
+	// 	{
+	// 		href: 'http://ww.baidu.com/',
+	// 		title: '百度一下,你就知道',
+	// 		name: '百度',
+	// 		num: '10'
+	// 	},
+	// 	{
+	// 		href: 'http://ww.taobao.com/',
+	// 		title: '淘宝商城',
+	// 		name: '淘宝',
+	// 		num: '2'
+	// 	},
+	// 	{
+	// 		href: 'http://ww.qq.com/',
+	// 		title: '腾讯首页',
+	// 		name: '腾讯',
+	// 		num: '2'
+	// 	}
+	// ]);
+</script>
+</body>
+</html>

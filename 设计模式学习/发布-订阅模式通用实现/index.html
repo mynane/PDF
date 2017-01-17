@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script src="./event.js"></script>
+	<script>
+		var salesOffices = {};
+		installEvent(salesOffices);
+
+		salesOffices.listen('squareMeter88', fn1 = function(price){
+			console.log('价格='+ price);
+		});
+
+		salesOffices.listen('squareMeter100', fn2 = function(price){
+			console.log('价格='+ price);
+		})
+
+		salesOffices.remove('squareMeter88', fn1)
+
+		setTimeout(function(){
+			salesOffices.trigger('squareMeter88', 2000000);
+			salesOffices.trigger('squareMeter100', 300000);
+		}, 3000)
+	</script>
+</body>
+</html>
