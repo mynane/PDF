@@ -35,11 +35,8 @@ News.prototype = {
 
 var Container = function(id, parent) {
 	News.call(this);
-
 	this.id = id;
-
 	this.parent = parent;
-
 	this.init();
 };
 
