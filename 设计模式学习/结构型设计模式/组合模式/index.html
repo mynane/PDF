@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.small img{
+			width: 20px;
+			height: 20px;
+		}
+	</style>
+</head>
+<body>
+	
+<script src="./container.js"></script>
+<script>
+	var new1 = new Container('new', document.body);
+	new1.add(
+		new Item('normal').add(
+			new IconNews('梅西没拿金球也伟大', '#', 'video')
+		)
+	).add(
+		new Item('normal').add(
+			new IconNews('保护强球强过用意明显', '#', 'live')
+		)
+	).add(
+		new Item('normal').add(
+			new NewsGroup('has-img').add(
+				new ImageNews('./1.jpg', '#', 'small')
+			).add(
+				new EasyNews('从240斤胖子成功变型男', '#')
+			).add(
+				new EasyNews('五大雷人跑步机', '#')
+			)
+		)
+	).add(
+		new Item('normal').add(
+			new TypeNews('但是开发考虑是否觉得jfk', '#', 'CBA', 'left')
+		)
+	).add(
+		new Item('normal').add(
+			new TypeNews('火炮标6山上对方即可垃圾及', '#', 'CBA', 'right')
+		)
+	).show()
+</script>
+</body>
+</html>
