@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script src="./BaseLocalStorage.js"></script>
+<script>
+var LS = new BaseLocalStorage('LS_');
+
+LS.set('a', '小明', function(){
+	console.log(arguments);
+})
+</script>
+</body>
+</html>

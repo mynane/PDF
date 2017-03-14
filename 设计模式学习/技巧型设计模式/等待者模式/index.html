@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script src='./waiter.js'></script>
+<script>
+	var waiter = new Waiter();
+
+	var first = function(){
+		var dfd = waiter.Deferred();
+		setTimeout(function(){
+			console.log('first finish');
+			dfd.resolve();
+		}, 5000)
+		return dfd;
+	}();
+
+	var second = function(){
+		var dfd = waiter.Deferred();
+		setTimeout(function(){
+			console.log('second finish');
+			dfd.resolve();
+		}, 10000)
+		return dfd;
+	}();
+
+	waiter
+		.when(first, second)
+		.done(function(){
+			console.log('success');
+		}, function(){
+			console.log('success again');
+		})
+		.fail(function(){
+			console.log('fail');
+		})
+	
+</script>
+</body>
+</html>
